@@ -1,0 +1,21 @@
+{
+  "name": "heroku-build-server",
+  "version": "0.0.0",
+  "description": "HEroku Build Server",
+  "main": "lib/server.js",
+  "repository": "",
+  "scripts": {
+    "postinstall": "echo add execution rights to build_erlang.sh; chmod +x build_erlang.sh; echo execution rights added"
+  },
+  "dependencies": {
+    "express": "4.10.2",
+    "serve-index": "^1.6.1",
+    "socket.io": "latest"
+  },
+  "devDependencies": {
+    "mocha": ">=1.17.0",
+    "chai": ">=1.8.1",
+    "sinon": "1.7.3",
+    "sinon-chai": "2.4.0"
+  }
+}
