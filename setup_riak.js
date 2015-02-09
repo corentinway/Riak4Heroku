@@ -7,7 +7,7 @@ var path = require( 'path' );
 function backupFile( filename ) {
 	var target = filename + '.back';
 	if ( !fs.existsSync( target ) ) {
-		fs.renameFileSync( filename, target );
+		fs.renameSync( filename, target );
 	}
 }
 /**
