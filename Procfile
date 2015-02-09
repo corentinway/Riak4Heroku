@@ -1,1 +1,1 @@
-web: node static_server.js
+web: /app/.dpkgf/usr/sbin/riak

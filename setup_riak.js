@@ -22,6 +22,8 @@ function copy( filename, folder ) {
 	fs.createReadStream( filename ).pipe( fs.createWriteStream( target, options ) );
 }
 
+console.log( 'setting up riak from: ' + __dirname );
+
 
 copy( __dirname + '/riak_script/riak', '/app/.dpkg/usr/sbin' );
 copy( __dirname + '/riak_script/env.sh', '/app/.dpkg/usr/lib/riak/lib/' );
