@@ -24,5 +24,5 @@ function copy( filename, folder ) {
 
 
 copy( __dirname + '/riak_script/riak', '/app/.dpkg/usr/sbin' );
-copy( __dirname + '/riak_script/env.sh', '/app/.dpkg/usr/sbin' );
-copy( __dirname + '/riak_script/riak.conf', '/app/.dpkg/usr/sbin' );
+copy( __dirname + '/riak_script/env.sh', '/app/.dpkg/usr/lib/riak/lib/' );
+copy( __dirname + '/riak_script/riak.conf', '/app/.dpkg/etc' );
