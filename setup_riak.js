@@ -25,6 +25,6 @@ function copy( filename, folder ) {
 console.log( 'setting up riak from: ' + __dirname );
 
 
-copy( __dirname + '/riak_script/riak', '/app/.dpkg/usr/sbin' );
-copy( __dirname + '/riak_script/env.sh', '/app/.dpkg/usr/lib/riak/lib/' );
-copy( __dirname + '/riak_script/riak.conf', '/app/.dpkg/etc/riak' );
+copy( __dirname + '/riak_script/riak', __dirname + '/.dpkg/usr/sbin' );
+copy( __dirname + '/riak_script/env.sh', __dirname + '/.dpkg/usr/lib/riak/lib/' );
+copy( __dirname + '/riak_script/riak.conf', __dirname + '/.dpkg/etc/riak' );
