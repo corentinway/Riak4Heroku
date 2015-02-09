@@ -1,1 +1,1 @@
-web: /app/.dpkg/usr/sbin/riak start
+web: su -c /app/.dpkg/usr/sbin/riak start
