@@ -5,7 +5,7 @@
   "main": "lib/server.js",
   "repository": "",
   "scripts": {
-    "postinstall": "echo add execution rights to build_erlang.sh; chmod +x build_erlang.sh; echo execution rights added"
+    "postinstall": "echo no post install script"
   },
   "dependencies": {
     "express": "4.10.2",
