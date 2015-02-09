@@ -1,1 +1,1 @@
-web: /app/.dpkgf/usr/sbin/riak
+web: /app/.dpkg/usr/sbin/riak
