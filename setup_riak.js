@@ -1,6 +1,9 @@
 var fs = require( 'fs' );
 var path = require( 'path' );
 
+var split = require( 'split' );
+var through = require( 'through' );
+
 /**
  * rename a file with the '.back' extension
  */
@@ -13,18 +16,34 @@ function backupFile( filename ) {
 /**
  * copy a file into a folder. the original target file is backed up
  */
-function copy( filename, target ) {
+function copy( filename, target, duplex ) {
 //	var target = folder + '/' + path.basename( filename );
 	backupFile( target );
 	var options = {
 		mode: '0777'
 	};
-	fs.createReadStream( filename ).pipe( fs.createWriteStream( target, options ) );
+	
+	if ( !duplex ) {
+		fs.createReadStream( filename ).pipe( fs.createWriteStream( target, options ) );
+	} else {
+		fs.createReadStream( filename )
+		.pipe( split( '\n' ) );
+		.pipe( duplex )
+		.pipe( fs.createWriteStream( target, options ) );
+		
+	}
 }
 
 console.log( 'setting up riak from: ' + __dirname );
 
+var updateConfig = through( function ( line ) {
+	if ( line.indexOf( 'listener.http.internal' ) >= 0 ) {
+		this.queue( 'listener.http.internal = 127.0.0.1:' + process.env.PORT + '\n' );
+	} else {
+		this.queue( line + '\n' );
+	}
+} );
 
 copy( __dirname + '/riak_script/riak', __dirname + '/.dpkg/usr/sbin/riak' );
 copy( __dirname + '/riak_script/env.sh', __dirname + '/.dpkg/usr/lib/riak/lib/env.sh' );
-copy( __dirname + '/riak_script/riak.conf', __dirname + '/.dpkg/etc/riak/riak.conf' );
+copy( __dirname + '/riak_script/riak.conf', __dirname + '/.dpkg/etc/riak/riak.conf', updateConfig );

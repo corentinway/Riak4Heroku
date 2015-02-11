@@ -10,7 +10,9 @@
   "dependencies": {
     "express": "4.10.2",
     "serve-index": "^1.6.1",
-    "socket.io": "latest"
+    "socket.io": "latest",
+	  "through": "latest",
+	  "split": "latest"
   },
   "devDependencies": {
     "mocha": ">=1.17.0",
