@@ -13,8 +13,8 @@ function backupFile( filename ) {
 /**
  * copy a file into a folder. the original target file is backed up
  */
-function copy( filename, folder ) {
-	var target = folder + '/' + path.basename( filename );
+function copy( filename, target ) {
+//	var target = folder + '/' + path.basename( filename );
 	backupFile( target );
 	var options = {
 		mode: '0777'
@@ -25,6 +25,6 @@ function copy( filename, folder ) {
 console.log( 'setting up riak from: ' + __dirname );
 
 
-//copy( __dirname + '/riak_script/riak', __dirname + '/.dpkg/usr/sbin' );
-//copy( __dirname + '/riak_script/env.sh', __dirname + '/.dpkg/usr/lib/riak/lib/' );
-//copy( __dirname + '/riak_script/riak.config', __dirname + '/.dpkg/etc/riak' );
+copy( __dirname + '/riak_script/riak', __dirname + '/.dpkg/usr/sbin/riak' );
+copy( __dirname + '/riak_script/env.sh', __dirname + '/.dpkg/usr/lib/riak/lib/env.sh' );
+copy( __dirname + '/riak_script/riak.config', __dirname + '/.dpkg/etc/riak/riak.config' );
