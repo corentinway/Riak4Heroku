@@ -129,7 +129,7 @@ CUTTLEFISH="on"
 if [ -z "$CUTTLEFISH" ]; then
     CUTTLEFISH_COMMAND_PREFIX=""
 else
-    CUTTLEFISH_COMMAND_PREFIX="$ERTS_PATH/escript $ERTS_PATH/cuttlefish -e $RUNNER_ETC_DIR -s $RUNNER_LIB_DIR -d /var/lib/riak/generated.configs -c $RUNNER_ETC_DIR/riak.conf"
+    CUTTLEFISH_COMMAND_PREFIX="$ERTS_PATH/escript $ERTS_PATH/cuttlefish -e $RUNNER_ETC_DIR -s $RUNNER_LIB_DIR -d /app/.dpkg/var/lib/riak/generated.configs -c $RUNNER_ETC_DIR/riak.conf"
 fi
 
 # Ping node without stealing stdin
