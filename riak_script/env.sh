@@ -24,7 +24,8 @@ RUNNER_LOG_DIR=/app/.dpkg/var/log/riak
 RUNNER_LIB_DIR=/app/.dpkg/usr/lib/riak/lib
 RUNNER_PATCH_DIR=/app/.dpkg/usr/lib/riak/lib/basho-patches
 PIPE_DIR=/app/.dpkg/tmp/riak/
-RUNNER_USER=riak
+# RUNNER_USER=riak
+RUNNER_USER=`whoami`
 APP_VERSION=2.0.4
 
 # Variables needed to support creation of .pid files
