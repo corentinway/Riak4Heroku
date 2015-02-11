@@ -27,4 +27,4 @@ console.log( 'setting up riak from: ' + __dirname );
 
 copy( __dirname + '/riak_script/riak', __dirname + '/.dpkg/usr/sbin/riak' );
 copy( __dirname + '/riak_script/env.sh', __dirname + '/.dpkg/usr/lib/riak/lib/env.sh' );
-copy( __dirname + '/riak_script/riak.config', __dirname + '/.dpkg/etc/riak/riak.config' );
+copy( __dirname + '/riak_script/riak.conf', __dirname + '/.dpkg/etc/riak/riak.conf' );
