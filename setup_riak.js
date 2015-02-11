@@ -27,7 +27,7 @@ function copy( filename, target, duplex ) {
 		fs.createReadStream( filename ).pipe( fs.createWriteStream( target, options ) );
 	} else {
 		fs.createReadStream( filename )
-		.pipe( split( '\n' ) );
+		.pipe( split( '\n' ) )
 		.pipe( duplex )
 		.pipe( fs.createWriteStream( target, options ) );
 		
