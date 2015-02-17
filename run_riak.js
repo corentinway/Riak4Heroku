@@ -34,7 +34,7 @@ var updateConfigurationLine = function ( line ) {
 var updateConfiguration = function() {
 	fs.createReadStream( configurationFilePath )
 	.pipe( split( '\n') )
-	.pipe( through( updateConfigurationFile ) )
+	.pipe( through( updateConfigurationLine ) )
 	.pipe( fs.createWriteStream( configurationFilePath ) );
 };
 
