@@ -1,1 +1,1 @@
-web: su -c /app/.dpkg/usr/sbin/riak start 
+web: node run_riak.js
