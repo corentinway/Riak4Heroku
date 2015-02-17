@@ -36,14 +36,6 @@ function copy( filename, target, duplex ) {
 
 console.log( 'setting up riak from: ' + __dirname );
 
-var updateConfig = through( function ( line ) {
-	if ( line.indexOf( 'listener.http.internal' ) >= 0 ) {
-		this.queue( 'listener.http.internal = 127.0.0.1:' + process.env.PORT + '\n' );
-	} else {
-		this.queue( line + '\n' );
-	}
-} );
-
 copy( __dirname + '/riak_script/riak', __dirname + '/.dpkg/usr/sbin/riak' );
 copy( __dirname + '/riak_script/env.sh', __dirname + '/.dpkg/usr/lib/riak/lib/env.sh' );
-copy( __dirname + '/riak_script/riak.conf', __dirname + '/.dpkg/etc/riak/riak.conf', updateConfig );
+copy( __dirname + '/riak_script/riak.conf', __dirname + '/.dpkg/etc/riak/riak.conf' );
