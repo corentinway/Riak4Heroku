@@ -12,7 +12,6 @@ var configurationFilePath = __dirname + '/.dpkg/etc/riak/riak.conf';
 // TODO move that in ~/.profile.d
 
 var configurations = [
-	        listener.http.internal
 	{ key: 'listener.http.internal', value: 'listener.http.internal = 127.0.0.1:' + process.env.PORT }
 ];
 /**
