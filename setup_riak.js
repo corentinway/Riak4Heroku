@@ -16,22 +16,14 @@ function backupFile( filename ) {
 /**
  * copy a file into a folder. the original target file is backed up
  */
-function copy( filename, target, duplex ) {
+function copy( filename, target ) {
 //	var target = folder + '/' + path.basename( filename );
 	backupFile( target );
 	var options = {
 		mode: '0777'
 	};
+	fs.createReadStream( filename ).pipe( fs.createWriteStream( target, options ) );
 	
-	if ( !duplex ) {
-		fs.createReadStream( filename ).pipe( fs.createWriteStream( target, options ) );
-	} else {
-		fs.createReadStream( filename )
-		.pipe( split( '\n' ) )
-		.pipe( duplex )
-		.pipe( fs.createWriteStream( target, options ) );
-		
-	}
 }
 
 console.log( 'setting up riak from: ' + __dirname );
