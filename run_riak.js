@@ -21,6 +21,7 @@ var updateConfigurationLine = function ( line ) {
 	var i;
 	for ( i = 0; i < configurations.length; i++ ) {
 		if ( line.indexOf( configurations[ i ].key ) >= 0 ) {
+			this.queue( '# --- configuration changed for the key "' + configurations[ i ].key + '" for the old  value : ' + line + '\n' );
 			this.queue( configurations[ i ].value + '\n' );
 			return;
 		}
@@ -35,6 +36,18 @@ var updateConfiguration = function() {
 	.pipe( split( '\n') )
 	.pipe( through( updateConfigurationFile ) )
 	.pipe( fs.createWriteStream( configurationFilePath ) );
+};
+
+var showConfiguration = function() {
+	console.log( 'Riak configuration' );
+	console.log( '------------------' );
+	fs.createReadStream( configurationFilePath )
+	.pipe( split( '\n') )
+	.on( 'data', function ( data ) {
+		if ( data.trim().indexOf( '#') !== 0 ) {
+			console.log( data.trim() );
+		}
+	} );
 };
 
 var execHandler = function ( errorMessage ) {
@@ -53,6 +66,8 @@ var execHandler = function ( errorMessage ) {
 }
 
 var start = function () {
+	updateConfiguration();
+	showConfiguration();
 	exec( __dirname + '/.dpkg/usr/sbin/riak start' , execHandler( 'Failed to start Riak.' ) );
 };
 
