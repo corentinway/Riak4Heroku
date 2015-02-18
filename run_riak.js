@@ -9,6 +9,12 @@ var through = require( 'through' );
 
 var configurationFilePath = __dirname + '/.dpkg/etc/riak/riak.conf';
 
+if ( !fs.existsSync( configurationFilePath ) ) {
+	console.error( 'Configuration file path does not exists: ' + configurationFilePath );
+	process.exit( 1 );
+}
+
+
 // TODO move that in ~/.profile.d
 
 var configurations = [
@@ -34,6 +40,8 @@ var updateConfigurationLine = function ( line ) {
  * update the configuration file
  */
 var updateConfiguration = function( callback ) {
+	console.log( '  Updating configuration' );
+	console.log( '------------------------' );
 	fs.createReadStream( configurationFilePath )
 	.pipe( split( '\n') )
 	.pipe( through( updateConfigurationLine ) )
@@ -54,7 +62,7 @@ var showConfiguration = function( callback ) {
 	.on( 'end', callback );
 };
 
-var execHandler = function ( errorMessage ) {
+var execHandler = function ( errorMessage, callback  ) {
 	return function ( error, stdout, stderr ) {
 		if ( error ) {
 			console.error( errorMessage );
@@ -66,37 +74,44 @@ var execHandler = function ( errorMessage ) {
 		if ( stderr ) {
 			console.error( 'error: ' +  stderr );
 		}
+		if ( callback ) {
+			callback();
+		}
 	};
-}
+};
+
+/**
+ * Ping once Riak
+ */
+var ping = function () {
+	exec( __dirname + '/.dpkg/usr/sbin/riak ping' , execHandler( 'Failed to ping Riak.' ) );
+	console.log( 'pinging Riak server' );
+};
+/**
+ * pings forever Riak server
+ */
+var pings = function () {
+	// ping riak forever
+	setTimeout( function () {
+		setInterval( ping, 5000 );
+	}, 5000 );
+};
 
 var start = function () {
 	updateConfiguration( function () {
 		showConfiguration( function () {
-			exec( __dirname + '/.dpkg/usr/sbin/riak start' , execHandler( 'Failed to start Riak.' ) );
+			exec( __dirname + '/.dpkg/usr/sbin/riak start' , execHandler( 'Failed to start Riak.', pings ) );
 		} );
 	} );
 };
 
 var stop = function () {
-	exec( __dirname + '/.dpkg/usr/sbin/riak stop' , execHandler( 'Failed to stop Riak.' ) );
-	process.exit();
+	exec( __dirname + '/.dpkg/usr/sbin/riak stop' , execHandler( 'Failed to stop Riak.', process.exit ) );
 };
 
-var ping = function () {
-	exec( __dirname + '/.dpkg/usr/sbin/riak ping' , execHandler( 'Failed to ping Riak.' ) );
-	console.log( 'pinging Riak server' );
-};
 
 // stop the dyno
 process.on( 'SIGTERM', stop );
 
 // start riak
 start();
-
-// ping riak forever
-setTimeout( function () {
-	setInterval( ping, 5000 );
-}, 5000 );
-
-
-
