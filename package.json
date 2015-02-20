@@ -5,7 +5,7 @@
   "main": "lib/server.js",
   "repository": "",
   "scripts": {
-    "postinstall": "node setup_riak.js"
+    "postinstall": "chmod +x .profile.d/* ; node setup_riak.js"
   },
   "dependencies": {
     "express": "4.10.2",
