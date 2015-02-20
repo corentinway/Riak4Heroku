@@ -1,9 +1,6 @@
 var fs = require( 'fs' );
 var path = require( 'path' );
 
-var split = require( 'split' );
-var through = require( 'through' );
-
 /**
  * rename a file with the '.back' extension
  */
