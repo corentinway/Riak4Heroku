@@ -6,18 +6,5 @@
   "repository": "",
   "scripts": {
     "postinstall": "chmod +x .profile.d/* ; node setup_riak.js"
-  },
-  "dependencies": {
-    "express": "4.10.2",
-    "serve-index": "^1.6.1",
-    "socket.io": "latest",
-	  "through": "latest",
-	  "split": "latest"
-  },
-  "devDependencies": {
-    "mocha": ">=1.17.0",
-    "chai": ">=1.8.1",
-    "sinon": "1.7.3",
-    "sinon-chai": "2.4.0"
   }
 }
