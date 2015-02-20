@@ -3,7 +3,7 @@
 var fs = require( 'fs' );
 
 var configurationFilePath = __dirname + '/../.dpkg/etc/riak/riak.conf';
-var target = configurationFilePath + '.target.txt';
+var target = configurationFilePath;
 
 if ( !fs.existsSync( configurationFilePath ) ) {
 	console.error( 'Configuration file path does not exists: ' + configurationFilePath );
