@@ -1,8 +1,8 @@
 {
-  "name": "heroku-build-server",
-  "version": "0.0.0",
-  "description": "HEroku Build Server",
-  "main": "lib/server.js",
+  "name": "Riak4Heroku",
+  "version": "1.0.0",
+  "description": "Riak for Heroku",
+  "main": "run_riak.js",
   "repository": "",
   "scripts": {
     "postinstall": "chmod +x .profile.d/* ; node setup_riak.js"
