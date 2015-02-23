@@ -5,6 +5,6 @@
   "main": "run_riak.js",
   "repository": "",
   "scripts": {
-    "postinstall": "chmod +x .profile.d/* ; node setup_riak.js"
+    "postinstall": "chmod +x .profile.d/* ; chmod +x * ;  ./setup_riak.sh"
   }
 }
