@@ -1,0 +1,1 @@
+This folder contains Riak files that are adapted to suite its installation on Heroku platform
