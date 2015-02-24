@@ -1,0 +1,7 @@
+{
+  "name": "Riak4Heroku",
+  "description": "A Riak Server setup for Heroku. It provides only a memory backend, 30MB memory, and 3 hours of TTL.",
+  "repository": "https://github.com/corentinway/Riak4Heroku",
+  "logo": "http://basho.com/design-assets/Riak-Product-Logos/png/riak-logo-color.png",
+  "keywords": ["Basho", "Riak", "cache"]
+}
