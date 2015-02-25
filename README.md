@@ -12,7 +12,7 @@ This project enable any one to deploy **one** Riak Server into the Heroku platef
 
 ## Choice #2 - heroku toolbelt and git install....
 
-TODO
+[See this wiki page](https://github.com/corentinway/Riak4Heroku/wiki/Heroku-Toolbelt-and-git-install)
 
 # How I have works on that subjects
 
