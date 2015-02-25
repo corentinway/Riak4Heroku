@@ -5,6 +5,6 @@
   "logo": "http://basho.com/design-assets/Riak-Product-Logos/png/riak-logo-color.png",
   "keywords": ["Basho", "Riak", "cache"],
   "env": {
-	  "BUILDPACK_URL": "http://github.com/corentinway/heroku-buildpack-riak"
+	  "BUILDPACK_URL": "https://github.com/ddollar/heroku-buildpack-multi"
   }
 }
