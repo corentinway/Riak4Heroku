@@ -131,7 +131,7 @@ README.md			file	this file
 run_riak.js			file	Main file that will [start](https://devcenter.heroku.com/articles/dynos#startup), ping, and [stop](https://devcenter.heroku.com/articles/dynos#shutdown) Riak
 setup_riak.sh		file	deploy Riak script for Heroku
 TODO.md				file	list things to do.
-```.
+```
 
 # TODO
 
