@@ -2,11 +2,17 @@
 
 This project enable any one to deploy **one** Riak Server into the Heroku plateform.
 
-# Install button
+# Install
+
+## Choice #1 - fast install button
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/corentinway/Riak4Heroku)
 
 <!-- https://heroku.com/deploy?template=https://github.com/heroku/button-sample -->
+
+## Choice #2 - heroku toolbelt and git install....
+
+TODO
 
 # How I have works on that subjects
 
